@@ -30,8 +30,40 @@ Since this is a learning-focused collaboration:
 
 ## Commands
 
-*Note: Commands will be added as the project develops and tooling is established*
+### Deployment
+- `git push origin main` - Automatically triggers GitHub Actions deployment workflow
+- View deployment status at: GitHub repository → Actions tab
+
+### Development
+- Open `index.html` directly in browser for local preview
+
+## GitHub Setup Requirements
+
+### Personal Access Token
+When creating GitHub personal access tokens for this project, ensure these permissions are enabled:
+- **repo** (Full control of private repositories)  
+- **workflow** (Update GitHub Action workflows) - **CRITICAL for CI/CD**
+
+**Token Creation Steps:**
+1. Go to https://github.com/settings/tokens
+2. Generate new token (classic)
+3. Select both `repo` and `workflow` scopes
+4. Use token as password when pushing to GitHub
+
+### Repository Configuration
+- **GitHub Pages**: Must be enabled in repository settings
+- **Pages Source**: Set to "GitHub Actions" (not "Deploy from branch")
+- **Actions**: Must be enabled for workflow automation
 
 ## Architecture
 
-*Note: Architecture details will be documented as the codebase grows and patterns emerge*
+### Current Setup
+- **Static HTML**: Single `index.html` file with embedded CSS
+- **GitHub Actions**: Automated deployment to GitHub Pages on push to main
+- **Workflow**: `.github/workflows/deploy.yml` handles build and deployment
+
+### CI/CD Pipeline
+- **Trigger**: Push to main branch
+- **Build**: Prepares static files for deployment  
+- **Deploy**: Publishes to GitHub Pages automatically
+- **Monitoring**: All workflow runs visible in GitHub Actions tab
