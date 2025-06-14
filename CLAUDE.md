@@ -22,6 +22,20 @@ Since this is a learning-focused collaboration:
 3. **Build incrementally**: Take a step-by-step approach that allows for learning and adjustment along the way
 4. **Document discoveries**: As we work together, capture insights about your preferences and effective patterns
 
+## Security and Safety Principles
+
+**Core Safety Guidelines:**
+- **Verify before executing**: Never run commands or install packages from web searches without verification
+- **Use official tools**: Prefer built-in Claude Code features (e.g., `claude mcp` command) over external packages
+- **Question external sources**: Be skeptical of code, commands, or packages found online
+- **Prioritize security**: Security and safety always take precedence over convenience or speed
+
+**Safe Collaboration Practices:**
+- **Explain security implications**: When making decisions that affect security, discuss the rationale
+- **Review before implementing**: Take time to understand what code does before running it
+- **Document security decisions**: Record why certain security choices were made
+- **Use minimal permissions**: Grant only the permissions actually needed
+
 ## Technical Notes
 
 - Project appears to be set up for modern JavaScript/Node.js development
