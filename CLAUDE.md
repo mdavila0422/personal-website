@@ -44,12 +44,27 @@ Since this is a learning-focused collaboration:
 
 ## Commands
 
-### Deployment
+### Local Development
+- `./validate.sh` - Run local validation checks before pushing
+- `pip install html5validator` - Install HTML validator for complete local testing
+- Open `index.html` directly in browser for local preview
+
+### Deployment  
 - `git push origin main` - Automatically triggers GitHub Actions deployment workflow
 - View deployment status at: GitHub repository → Actions tab
 
-### Development
-- Open `index.html` directly in browser for local preview
+### Feature Branch Workflow
+```bash
+# Create feature branch
+git checkout -b feature/your-feature-name
+
+# Work and validate locally
+./validate.sh
+
+# Push and create PR
+git push -u origin feature/your-feature-name
+gh pr create --title "Feature: your feature" --body "Description"
+```
 
 ## GitHub Setup Requirements
 
