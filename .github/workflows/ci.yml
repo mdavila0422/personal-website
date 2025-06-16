@@ -1,0 +1,40 @@
+name: CI - Validation and Testing
+
+# This workflow runs on all branches and PRs for validation
+on:
+  push:
+    branches: [ "**" ]  # Run on all branches
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate HTML files
+        run: |
+          # Install html5validator
+          pip install html5validator
+          # Validate all HTML files
+          html5validator --root . --match "*.html" --log INFO
+
+      - name: Check basic file structure
+        run: |
+          # Ensure index.html exists
+          if [ ! -f "index.html" ]; then
+            echo "Error: index.html not found!"
+            exit 1
+          fi
+          echo "✅ Basic structure validation passed"
+
+      - name: Validate CLAUDE.md exists
+        run: |
+          if [ ! -f "CLAUDE.md" ]; then
+            echo "Warning: CLAUDE.md not found"
+            exit 1
+          fi
+          echo "✅ CLAUDE.md validation passed"
