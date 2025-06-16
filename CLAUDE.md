@@ -92,7 +92,23 @@ When creating GitHub personal access tokens for this project, ensure these permi
 - **Workflow**: `.github/workflows/deploy.yml` handles build and deployment
 
 ### CI/CD Pipeline
-- **Trigger**: Push to main branch
-- **Build**: Prepares static files for deployment  
-- **Deploy**: Publishes to GitHub Pages automatically
-- **Monitoring**: All workflow runs visible in GitHub Actions tab
+
+**Two-Workflow Architecture:**
+
+**1. CI Validation** (`.github/workflows/ci.yml`)
+- **Triggers**: All branches and PRs to main
+- **Purpose**: Validate code quality and structure
+- **Jobs**: `validate` (HTML validation, file structure checks)
+- **Status Check**: Creates "Validate Code" check for branch protection
+
+**2. Deployment** (`.github/workflows/deploy.yml`)  
+- **Triggers**: Only pushes to main branch
+- **Purpose**: Deploy to GitHub Pages
+- **Jobs**: `build` + `deploy` 
+- **Environment**: Protected `github-pages` environment
+
+**Benefits:**
+- ✅ Feature branches get validated without deployment attempts  
+- ✅ Only main branch can deploy (security)
+- ✅ Status checks available for branch protection
+- ✅ Fast feedback on PRs
